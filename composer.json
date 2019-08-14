@@ -1,0 +1,17 @@
+{
+    "name": "OpenMageModuleFostering/Increasingly_Analytics",
+    "type": "magento-module",
+    "license": "Open-Software-License-(OSL)",
+    "homepage": "",
+    "description": "Increase basket size using personalised smart bundling
+",
+    "authors": [
+    {
+        "name": "Increasingly",
+        "email": "renu@increasingly.co"
+    }
+],
+    "suggest": {
+        "magento-hackathon/magento-composer-installer": "*"
+    }
+}

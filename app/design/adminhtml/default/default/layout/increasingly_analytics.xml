@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout>
+    <adminhtml_dataintegration_index>
+   	<reference name="content">
+        <block type="increasingly_analytics/adminhtml_DataIntegration" template="increasingly/dataintegration.phtml" name="increasingly.dataintegration"/>
+    </reference>
+ </adminhtml_dataintegration_index>  
+</layout>

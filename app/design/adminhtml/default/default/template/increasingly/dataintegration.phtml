@@ -1,0 +1,104 @@
+<?php $import = $this->getImport(); ?>
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script type="text/javascript">
+    jQuery.noConflict();
+
+    function import_increasingly() 
+    {        
+        var total_chunks = <?php echo $import->getChunks(); ?>;
+        var chunk_percentage = 100;
+     
+        if(total_chunks > 0)
+        {
+            var chunk_percentage = (100 / total_chunks);
+        }
+
+        // Disable button
+        jQuery('#increasingly_button').addClass('disabled').attr('disabled', 'disabled');
+
+        var sync_chunk = function(chunk_id){
+            progress_percentage = Math.round(chunk_id * chunk_percentage);
+            update_import_progress_msg('Please wait... '+progress_percentage+'% done', true);
+
+            // add form_key for magento controller check
+            data = {'chunk_id': chunk_id, 'form_key': window.FORM_KEY};
+           
+            jQuery.post('<?php echo $this->getOrderImportUrl(); ?>', data, function(response) {
+              new_chunk_id = chunk_id + 1; 
+              if(new_chunk_id < total_chunks)
+              {
+                setTimeout(function(){
+                    sync_chunk(new_chunk_id);
+                 }, 150)
+              }
+              else
+              { 
+               update_import_progress_msg("<span style='color: green;'>Data import is completed! Data will appear in Increasingly in few minutes.</span>", false);
+               jQuery('#increasingly_button').removeClass('disabled').addClass('success');
+              }
+
+            });
+
+        }
+
+        var update_import_progress_msg = function(message, show_loader_img){
+            if (show_loader_img)
+                message = '<img src="<?php echo $this->getSkinUrl("increasingly/loader.gif"); ?>" />' + message;
+            jQuery('#increasingly_import_status').html(message);
+        }
+        sync_chunk(0);
+    }
+
+  function loadHtmlFields(selected) 
+  {  
+    if(selected == 1)
+    {
+      $('row_increasingly_analytics_settings_api_key').show();
+      $('row_increasingly_analytics_settings_api_secret').show();
+      $('row_increasingly_analytics_settings_import').show();
+    }
+    else
+    {
+      $('row_increasingly_analytics_settings_api_key').hide();
+      $('row_increasingly_analytics_settings_api_secret').hide();
+      $('row_increasingly_analytics_settings_import').hide();
+    }
+
+  }
+</script>
+
+<div class="content-header">
+    <table cellspacing="0">
+        <tr>
+            <td>
+                <h3 class="increasingly-header">Increasingly Settings</h3>
+            </td>
+            <td class="form-buttons">
+	<button  id="btnSaveConfigDetails" title="Save Config" type="button" class="scalable save" 
+		onclick="data_integration_form.submit()" style=""><span><span><span>Save Config</span></span></span></button>
+         </td>
+         </tr>
+    </table>
+</div>
+
+<?php
+    $adminobj= new Mage_Adminhtml_Block_Template(); 
+    $formkey=$adminobj->getFormKey();
+?>
+
+<form id="data_integration_form" name="data_integration_form" method="post" action="<?php echo $this->getUrl('*/*/saveConfigDetails')?>" enctype="multipart/form-data">
+<input name="form_key" type="hidden" value="<?php echo Mage::getSingleton('core/session')->getFormKey() ?>" />
+   
+<table cellspacing="0" class="form-list">
+<tbody>
+
+<tr id="row_increasingly_analytics_settings_enable">
+<td class="label"><label for="increasingly_analytics_settings_enable">Enabled</label></td>
+<td class="value"><?php echo $this->renderIncreasinglyEnableStatus(Mage::getStoreConfig('increasingly_analytics/settings/enable'))?></td>
+</tr>
+
+<?php echo $this->getHtmlFields(Mage::getStoreConfig('increasingly_analytics/settings/enable')) ?>
+
+</tbody>
+</table>
+</form>

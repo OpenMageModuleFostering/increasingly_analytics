@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<package>
+    <name>Increasingly_Analytics</name>
+    <version>1.0.1</version>
+    <stability>stable</stability>
+    <license uri="https://opensource.org/licenses/osl-3.0.php">Open Software License (OSL)</license>
+    <channel>community</channel>
+    <extends/>
+    <summary>Increase basket size using personalised smart bundling&#xD;
+</summary>
+    <description>Increasingly - Smart product bundling for Magento&#xD;
+&#xD;
+Increasingly is a predictive selling technology. We increase your basket size.&#xD;
+&#xD;
+Overview&#xD;
+&#xD;
+Our smart product bundling platform drives up your basket size +12% by using cutting edge machine learning.&#xD;
+&#xD;
+Amazon &amp; several other large online retailers have long used product bundles as a way to drive up Average Order Value. They are able to do this because of their scale &amp; technical resources. Increasingly delivers the power of bundling straight into your store, helping you drive up basket size.&#xD;
+&#xD;
+It&#x2019;s simple &amp; easy to integrate yet delivers powerful results. &#xD;
+&#xD;
+Key Features&#xD;
+&#xD;
+Personalised bundles: Our powerful algorithms drive personalised bundling experiences for your customers based on their behaviour, intent &amp; propensity to purchase.&#xD;
+ &#xD;
+Dynamic Discounting: You can set discounts on bundles or allow our system to determine instances for discounting based on the customer's likelihood to buy.&#xD;
+&#xD;
+Products together optimisation: Bundles are constantly tested on page to make sure that only the best performing bundles are shown.&#xD;
+&#xD;
+Stock responsive: As your catalogue changes, so do your bundles. Out-of-stock bundles are automatically &amp; instantly eliminated, giving your customers the best experience possible.&#xD;
+&#xD;
+Mobile ready: Works on any device, any screen size &amp; can also be integrated into a mobile app.&#xD;
+&#xD;
+Brand and Category filtering: Full control within the dashboard. Don&#x2019;t want to run bundles on a category, SKU or a brand? Increasingly has filtering built in to protect any filtering you may require.&#xD;
+&#xD;
+Why Increasingly?&#xD;
+&#xD;
+We are 100% focussed on helping retailers grow basket size using smart product bundling.  ALL we do is bundling &amp; so we spend ALL our time working on it &#x2013; that&#x2019;s what makes our results so amazing.&#xD;
+&#xD;
+We only charge you a percentage of the uplift we deliver to you, so the solution pays for itself while delivering you new revenue.&#xD;
+&#xD;
+It's free to try &amp; we have a 14-day trial where you can test it for no-risk to you. It&#x2019;s easy to setup and customise.&#xD;
+&#xD;
+We have a dashboard which provides you with in depth analytics and insights on what's sells together &amp; allows you to administer and manage your bundles.&#xD;
+</description>
+    <notes>dddd</notes>
+    <authors><author><name>Increasingly</name><user>Increasingly</user><email>renu@increasingly.co</email></author><author><name>Increasingly</name><user>Increasingly</user><email>shree@increasingly.co</email></author></authors>
+    <date>2016-06-09</date>
+    <time>16:51:30</time>
+    <contents><target name="magecommunity"><dir name="Increasingly"><dir name="Analytics"><dir name="Block"><file name="Addtocart.php" hash="3429b60b501c7681a3c79fd46138b787"/><dir name="Adminhtml"><file name="DataIntegration.php" hash="b7c543b33f563ef458d403df94c62a4c"/></dir><file name="Cart.php" hash="56c9f503b7c55d835cbd93c675dcc338"/><file name="Category.php" hash="3b87f305e0957dd1fdace455c1f0fa7c"/><file name="Element.php" hash="8d533705e7a3c1ada7d775a6d9282f43"/><file name="Embed.php" hash="5ba08a6642ed22d8bb1a84ab0501f8dc"/><file name="Pagetype.php" hash="5dc81c7c184031629399c7c5a982036e"/><file name="Product.php" hash="2da759eb9bd2bf13e5a8a92087981206"/><file name="Track.php" hash="aa6a9d870f14c4e3721675658dfb276e"/></dir><dir name="Helper"><file name="Data.php" hash="6d6fe43c72cf7baf91de7145c98df1a3"/><file name="DateFormatter.php" hash="d8f963bd1f9fe390e038a2065fd5c4c4"/><file name="PriceFormatter.php" hash="9bc46d3afb4612131a29b9a1c2b82fad"/><file name="ProductFormatter.php" hash="24324a2207485f281bdeba654c08a34c"/></dir><dir name="Model"><file name="Base.php" hash="957cc5bb083e9b49b5468c986a1e846a"/><file name="Bundle.php" hash="767a26eaefaed893d163737d64930933"/><file name="DataIntegration.php" hash="ff9dc202ea17e49ceaba09c6190492cd"/><dir name="Meta"><file name="Product.php" hash="6a037e5325193fae3147fc1a9891606c"/></dir><dir name="Mysql4"><dir name="Bundle"><file name="Collection.php" hash="021c49a92767b78e238477a3dc8da783"/></dir><file name="Bundle.php" hash="13baace5753c59b86a032f5b5e379830"/></dir><file name="Observer.php" hash="efd64c4e950498032cd7481a5c5d0817"/><file name="Product.php" hash="f473c25a470a2509b00a4a15ed8b857f"/></dir><dir name="controllers"><file name="AddbundletocartController.php" hash="a8d13fcbd249ebb8112f32c6e6edb5ad"/><dir name="Adminhtml"><file name="DataIntegrationController.php" hash="21110e0a5908740f13716967e652908e"/></dir><file name="ProductsApiController.php" hash="58c7e54788361cc25bdc1b49a2d86e09"/></dir><dir name="etc"><file name="config.xml" hash="222b073dbe641b013cd241760a380037"/></dir><dir name="sql"><dir name="setup"><file name="mysql-install-1.0.0.php" hash="130ffdfffab451f5d41fd6eb758841ee"/></dir></dir></dir></dir></target><target name="magedesign"><dir name="adminhtml"><dir name="default"><dir name="default"><dir name="template"><dir name="increasingly"><file name="dataintegration.phtml" hash="8a730e566c21b2155d6f3e4ca73a1b6d"/></dir></dir><dir name="layout"><file name="increasingly_analytics.xml" hash="d859a26dba5142f02e514f28f507891c"/></dir></dir></dir></dir><dir name="frontend"><dir name="base"><dir name="default"><dir name="template"><dir name="increasingly"><file name="addtocart.phtml" hash="e3af2445ac014887b3072cf85dd81d4f"/><file name="cart.phtml" hash="9db284236bf7ffafc1d5aa8d5f46ba8d"/><file name="category.phtml" hash="75e77b9d1cbbd1e0129c0c10737461e6"/><file name="element.phtml" hash="c5f1cbbc02801009247409890172ca4e"/><file name="embed.phtml" hash="52cde76a239e3084ce3a1254b004a742"/><file name="pagetype.phtml" hash="9cbb3b6bd97f865da70c5ca860121a31"/><file name="product.phtml" hash="14d24b0ced5abc85619aa3538b21f2f7"/><file name="track.phtml" hash="b878cc208fe87e800d52bb6a97355d60"/></dir></dir><dir name="layout"><file name="increasingly_analytics.xml" hash="78766218deed3d60d4ab0fdee7729b91"/></dir></dir></dir></dir></target><target name="mageetc"><dir name="modules"><file name="Increasingly_Analytics.xml" hash="d285a9ae62b5b0624b727e341fe8e005"/></dir></target><target name="mageskin"><dir name="adminhtml"><dir name="default"><dir name="default"><dir name="increasingly"><file name="loader.gif" hash="a51c5608d01acf32df728f299767f82b"/></dir></dir></dir></dir></target></contents>
+    <compatible/>
+    <dependencies><required><php><min>5.2.0</min><max>5.6.0</max></php></required></dependencies>
+</package>

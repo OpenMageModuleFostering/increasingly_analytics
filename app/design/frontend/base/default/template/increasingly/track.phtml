@@ -1,0 +1,71 @@
+<?php 
+/**
+* Magento
+*
+* NOTICE OF LICENSE
+*
+* This source file is subject to the Open Software License (OSL 3.0)
+* that is bundled with this package in the file LICENSE.txt.
+* It is also available through the world-wide-web at this URL:
+* http://opensource.org/licenses/osl-3.0.php
+* If you did not receive a copy of the license and are unable to
+* obtain it through the world-wide-web, please send an email
+* to license@magentocommerce.com so we can send you a copy immediately.
+*
+* DISCLAIMER
+*
+* Do not edit or add to this file if you wish to upgrade Magento to newer
+* versions in the future. If you wish to customize Magento for your
+* needs please refer to http://www.magentocommerce.com for more information.
+*
+* @category  Increasingly
+* @package   Increasingly_Analytics
+* @author    Increasingly Pvt Ltd
+* @copyright Copyright (c) 2015-2016 Increasingly Ltd (http://www.increasingly.co)
+* @license   http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+*/
+?>
+<?php $helper = Mage::helper('increasingly_analytics'); ?>
+<?php $events = $this->getTrackingEvents(); ?>
+
+<script type="text/javascript"> 
+  $(document).on("click", "#btnaddtobasket", function () {
+    var tmpl = mageTemplate('#mage-template');
+    var data = {
+      data: {
+        name: 'John',
+        location: 'New York'
+      }
+    };
+    $('#target').after(
+           tmpl(data)
+    );
+  });
+  window.increasingly=window.increasingly||[],window.increasingly.queue=[],window.increasingly.methods=["identify","track"],
+  window.increasingly.filter=function(e){return function(){a=Array.prototype.slice.call(arguments);a.unshift(e);window.increasingly.queue.push(a);}};
+
+  for(var i=0;window.increasingly.methods.length>i;i++)
+  {
+    var mthd=window.increasingly.methods[i];
+    window.increasingly[mthd]=window.increasingly.filter(mthd);
+  }
+
+  window.increasingly.load=function(){var t=document;var n=t.getElementsByTagName("script")[0];var r=t.createElement("script");
+  r.type="text/javascript";r.async=true;r.src="http://www.increasingly.co/js/track.js";n.parentNode.insertBefore(r,n);};
+
+  window.increasingly.loadJs=function(){var t=document;var n=t.getElementsByTagName("script")[0];var r=t.createElement("script");
+  r.type="text/javascript";r.async=true;r.src="http://www.increasingly.co/js/increasingly.js";n.parentNode.insertBefore(r,n);};
+
+
+
+
+  increasingly.load();
+  increasingly.loadJs();
+  <?php foreach ($events as $trackEvent) : ?> 
+
+    <?php if($trackEvent['method'] == 'track') : ?>
+        increasingly.track("<?php echo $trackEvent['event_type']; ?>", "<?php echo base64_encode(json_encode($trackEvent)); ?>");
+     <?php endif; ?>
+
+  <?php endforeach; ?>
+</script>

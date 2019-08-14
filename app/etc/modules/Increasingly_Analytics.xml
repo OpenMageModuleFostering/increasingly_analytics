@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<config>
+    <modules>
+        <Increasingly_Analytics>
+            <active>true</active>
+            <codePool>community</codePool>
+            <depends>
+                <Mage_Checkout/>
+            </depends>
+        </Increasingly_Analytics>
+    </modules>
+</config>

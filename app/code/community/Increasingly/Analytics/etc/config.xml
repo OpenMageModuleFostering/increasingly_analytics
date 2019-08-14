@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+* Magento
+*
+* NOTICE OF LICENSE
+*
+* This source file is subject to the Open Software License (OSL 3.0)
+* that is bundled with this package in the file LICENSE.txt.
+* It is also available through the world-wide-web at this URL:
+* http://opensource.org/licenses/osl-3.0.php
+* If you did not receive a copy of the license and are unable to
+* obtain it through the world-wide-web, please send an email
+* to license@magentocommerce.com so we can send you a copy immediately.
+*
+* DISCLAIMER
+*
+* Do not edit or add to this file if you wish to upgrade Magento to newer
+* versions in the future. If you wish to customize Magento for your
+* needs please refer to http://www.magentocommerce.com for more information.
+*
+* @category  Increasingly
+* @package   Increasingly_Analytics
+* @author    Increasingly Pvt Ltd
+* @copyright Copyright (c) 2015-2016 Increasingly Ltd (http://www.increasingly.co)
+* @license   http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+-->
+<!--
+/**
+ * @package  Increasingly_Analytics
+ */
+-->
+<config>
+  <modules>
+    <Increasingly_Analytics>
+      <version>1.0.0</version>	
+    </Increasingly_Analytics>
+  </modules>
+  <global>
+    <events>
+      <controller_action_layout_generate_blocks_after>
+        <observers>
+          <page_view>
+            <class>Increasingly_Analytics_Model_Observer</class>
+            <method>trackPageView</method>
+            <type>singleton</type>
+          </page_view>
+        </observers>
+      </controller_action_layout_generate_blocks_after>
+      <checkout_cart_product_add_after>
+        <observers>
+          <add_to_cart>
+            <type>singleton</type>
+            <class>Increasingly_Analytics_Model_Observer</class>
+            <method>addToCart</method>
+          </add_to_cart>
+        </observers>
+      </checkout_cart_product_add_after>
+      <sales_quote_remove_item>
+        <observers>
+          <remove_from_cart>
+            <type>singleton</type>
+            <class>Increasingly_Analytics_Model_Observer</class>
+            <method>removeFromCart</method>
+          </remove_from_cart>
+        </observers>
+      </sales_quote_remove_item>
+      <sales_order_place_after>
+        <observers>
+          <place_order>
+            <type>singleton</type>
+            <class>Increasingly_Analytics_Model_Observer</class>
+            <method>trackNewOrder</method>
+          </place_order>
+        </observers>
+      </sales_order_place_after>
+      <sales_order_save_after>
+        <observers>
+          <update_order>
+            <type>singleton</type>
+            <class>Increasingly_Analytics_Model_Observer</class>
+            <method>updateOrder</method>
+          </update_order>
+        </observers>
+      </sales_order_save_after>
+      <sales_quote_collect_totals_after>
+        <observers>
+          <apply_cart_discount>
+            <type>singleton</type>
+            <class>Increasingly_Analytics_Model_Observer</class>
+            <method>applyCartDiscount</method>
+          </apply_cart_discount>
+        </observers>
+      </sales_quote_collect_totals_after> 
+       <sales_quote_save_after>
+        <observers>
+          <empty_cart>
+            <type>singleton</type>
+            <class>Increasingly_Analytics_Model_Observer</class>
+            <method>empty_cart</method>
+          </empty_cart>
+        </observers>
+      </sales_quote_save_after> 
+      <catalog_product_save_commit_after>
+        <observers>
+          <product_update>
+            <type>singleton</type>
+            <class>Increasingly_Analytics_Model_Observer</class>
+            <method>productAddOrUpdate</method>
+          </product_update>
+        </observers>
+      </catalog_product_save_commit_after>
+      <catalog_product_delete_commit_after>
+        <observers>
+          <product_delete>
+            <type>singleton</type>
+            <class>Increasingly_Analytics_Model_Observer</class>
+            <method>productDelete</method>
+          </product_delete>
+        </observers>
+      </catalog_product_delete_commit_after>       
+    </events>
+    <models>
+      <increasingly_analytics>
+        <class>Increasingly_Analytics_Model</class>  
+        <resourceModel>increasingly_analytics_mysql4</resourceModel>             
+      </increasingly_analytics>
+      <increasingly_analytics_mysql4>
+        <class>Increasingly_Analytics_Model_Mysql4</class>
+        <entities>
+          <increasingly_analytics_bundle>
+            <table>increasingly_analytics_bundle</table>
+          </increasingly_analytics_bundle>             
+        </entities>
+      </increasingly_analytics_mysql4>
+    </models>
+    <resources>
+      <increasingly_analytics_setup>
+        <setup>
+          <module>Increasingly_Analytics</module>
+        </setup>
+        <connection>
+          <use>core_setup</use>
+        </connection>
+      </increasingly_analytics_setup>
+      <increasingly_analytics_write>
+        <connection>
+          <use>core_write</use>
+        </connection>
+      </increasingly_analytics_write>
+      <increasingly_analytics_read>
+        <connection>
+          <use>core_read</use>
+        </connection>
+      </increasingly_analytics_read>
+    </resources>
+    <blocks>
+      <increasingly_analytics>
+        <class>Increasingly_Analytics_Block</class>
+      </increasingly_analytics>
+    </blocks>
+    <helpers>
+      <increasingly_analytics>
+        <class>Increasingly_Analytics_Helper</class>
+      </increasingly_analytics>
+    </helpers>
+  </global>
+  <frontend>
+    <layout>
+      <updates>
+        <increasingly_analytics>
+          <file>increasingly_analytics.xml</file>
+        </increasingly_analytics>
+      </updates>
+    </layout>
+    <routers>
+      <increasingly_analytics>
+       <use>standard</use>
+       <args>
+        <module>Increasingly_Analytics</module>
+        <frontName>increasingly</frontName>
+        </args>
+      </increasingly_analytics>
+    </routers>     
+    <events>
+    <customer_login>
+      <observers>
+        <increasingly_login>
+          <type>singleton</type>
+          <class>Increasingly_Analytics_Model_Observer</class>
+          <method>customerLogin</method>
+        </increasingly_login>
+      </observers>
+    </customer_login>
+    </events>
+  </frontend>  
+  <admin>
+  	<routers>
+     <adminhtml>
+       <args>
+         <modules>
+           <Increasingly_Analytics before="Mage_adminhtml">Increasingly_Analytics_Adminhtml</Increasingly_Analytics>
+         </modules>
+       </args>
+     </adminhtml>
+   </routers>
+  </admin>   
+  <adminhtml>
+    <acl>
+      <resources>
+        <admin>
+          <children>
+            <system>
+              <children>
+                <config>
+                  <children>
+                    <increasingly_analytics>
+                      <title>Increasingly Configuration</title>
+                    </increasingly_analytics>
+                  </children>
+                </config>
+              </children>
+            </system>
+          </children>
+        </admin>
+      </resources>
+    </acl>
+    <layout>
+      <updates>
+       <increasingly_analytics>
+        <file>increasingly_analytics.xml</file>
+      </increasingly_analytics>
+    </updates>
+  </layout>
+  <menu>
+    <increasingly>
+      <title>Increasingly</title>
+      <sort_order>70</sort_order>
+      <action>adminhtml/DataIntegration/index</action>
+    </increasingly>
+  </menu>
+  </adminhtml>
+  <default>
+    <increasingly_analytics>
+      <settings>
+        <enable>0</enable>
+      </settings>
+    </increasingly_analytics>
+  </default>
+</config>

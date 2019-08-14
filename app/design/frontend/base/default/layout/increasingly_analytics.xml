@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout version="1.0.0">
+  <default>
+      <reference name="head">
+          <block type="increasingly_analytics/track" name="increasingly.analytics" template="increasingly/track.phtml" after="-" />
+      </reference>
+      <!-- Adds Increasingly page type tags to head -->
+      <reference name="head">
+          <block type="increasingly_analytics/pagetype" name="increasingly.pagetype" template="increasingly/pagetype.phtml"/>
+      </reference>
+      <!-- Adds Increasingly embed script to head -->
+      <reference name="head">
+          <block type="increasingly_analytics/embed" name="increasingly.embed" template="increasingly/embed.phtml"/>
+      </reference>
+
+      <!-- Adds Increasingly `add-to-cart` script to head -->
+      <reference name="head">
+          <block type="increasingly_analytics/addtocart" name="increasingly.addtocart" template="increasingly/addtocart.phtml"/>
+      </reference>
+
+      <!--Tag Increasingly shopping cart -->
+      <reference name="after_body_start">
+          <block type="increasingly_analytics/cart" name="increasingly.cart" template="increasingly/cart.phtml"/>
+      </reference>
+  </default>
+   <!-- Tag category -->
+  <catalog_category_default>
+      <update handle="increasingly_analytics_category" />
+  </catalog_category_default>
+  <catalog_category_layered>
+      <update handle="increasingly_analytics_category" />
+  </catalog_category_layered>
+  <increasingly_analytics_category>
+      <reference name="after_body_start">
+          <block type="increasingly_analytics/category" name="increasingly.category" template="increasingly/category.phtml"/>
+      </reference>
+  </increasingly_analytics_category> 
+
+  <!-- Tag product -->
+  <catalog_product_view>
+      <reference name="after_body_start">
+          <block type="increasingly_analytics/product" name="increasingly.product" template="increasingly/product.phtml"/>
+      </reference>
+  </catalog_product_view>
+
+  <!-- Tag checkout -->
+  <!-- <checkout_onepage_success>
+      <reference name="after_body_start">
+          <block type="increasingly_analytics/order" name="increasingly.order" template="increasingly/order.phtml"/>
+      </reference>
+  </checkout_onepage_success> -->
+
+  <!-- All pages -->
+  <default>
+      <!-- Adds 1 content placeholder first in page content section -->
+      <reference name="content">
+          <block type="increasingly_analytics/element" name="increasingly.page.top" before="-"
+                 template="increasingly/element.phtml">
+              <action method="setData">
+                  <name>div_id</name>
+                  <value>increasingly-page-top</value>
+              </action>
+          </block>
+      </reference>
+      <!-- Adds 1 content placeholder to left sidebar -->
+      <reference name="left">
+          <block type="increasingly_analytics/element" name="increasingly.column.left" before="-"
+                 template="increasingly/element.phtml">
+              <action method="setData">
+                  <name>div_id</name>
+                  <value>increasingly-column-left</value>
+              </action>
+          </block>
+      </reference>
+      <!-- Adds 1 content placeholder to right sidebar -->
+      <reference name="right">
+          <block type="increasingly_analytics/element" name="increasingly.column.right" after="-"
+                 template="increasingly/element.phtml">
+              <action method="setData">
+                  <name>div_id</name>
+                  <value>increasingly-column-right</value>
+              </action>
+          </block>
+      </reference>
+  </default> 
+
+
+  <!-- Custom handle for displaying 1 content placeholder last in page content section -->
+  <increasingly_analytics_page_default_footer>
+      <reference name="content">
+          <block type="increasingly_analytics/element" name="increasingly.page.footer" after="-"
+                 template="increasingly/element.phtml">
+              <action method="setData">
+                  <name>div_id</name>
+                  <value>increasingly-page-footer</value>
+              </action>
+          </block>
+      </reference>
+  </increasingly_analytics_page_default_footer>
+
+  <!-- Home page -->
+  <cms_index_index>
+      <!-- Add 4 content placeholders after the home page content -->
+      <reference name="content">
+          <block type="increasingly_analytics/element" name="increasingly.page.home1" after="-"
+                 template="increasingly/element.phtml">
+              <action method="setData">
+                  <name>div_id</name>
+                  <value>frontpage-increasingly-1</value>
+              </action>
+          </block>
+      </reference>
+  </cms_index_index>
+  <!-- Shopping cart checkout page -->
+  <checkout_cart_index>
+      <!-- Adds 3 content placeholders after the cart content -->
+      <reference name="content">
+          <block type="increasingly_analytics/element" name="increasingly.page.cart1" after="checkout.cart"
+                 template="increasingly/element.phtml">
+              <action method="setData">
+                  <name>div_id</name>
+                  <value>increasingly-page-cart1</value>
+              </action>
+          </block>         
+      </reference>
+  </checkout_cart_index>
+
+  <sales_quote_collect_totals_after>
+   <observers>
+     <class>Custom_Module_Model_Observer</class>
+     <method>collectTotals</method>
+   </observers>
+ </sales_quote_collect_totals_after>
+
+   <!-- Product page -->
+  <catalog_product_view>
+      <!-- Adds 3 content placeholders after the product info -->
+      <reference name="content">
+          <block type="increasingly_analytics/element" name="increasingly.page.product1" after="product.info"
+                 template="increasingly/element.phtml">
+              <action method="setData">
+                  <name>div_id</name>
+                  <value>increasingly-page-product1</value>
+              </action>
+          </block>
+      </reference>
+      <reference name="product.info.addtocart">
+        <block type="increasingly_analytics/element" name="increasingly.catalog.product1" after="product.info.addtocart" template="increasingly/element.phtml">
+          <action method="setData">
+            <name>div_id</name>
+            <value>increasingly-catalog-product1</value>
+          </action>
+        </block>
+      </reference>           
+  </catalog_product_view>
+
+  <MY_HANDLE_catalog_product_view>
+    <reference name="content">            
+      <!-- <remove name="product.info.addto"/>  -->
+      <remove name="product.info.availability"/>
+      <remove name="product.info.sharing"/>
+      <remove name="product.info.addtocartqty"/>
+      <remove name="product.tierprices" />
+      <remove name="product.info.upsell" />
+      <remove name="product.clone_prices" />
+      <remove name="product.tag.list" /> 
+    </reference>
+  </MY_HANDLE_catalog_product_view>
+    <!-- Category page -->
+  <catalog_category_default>
+      <update handle="increasingly_analytics_catalog_category" />
+  </catalog_category_default>
+  <catalog_category_layered>
+      <update handle="increasingly_analytics_catalog_category" />
+  </catalog_category_layered>
+  <increasingly_analytics_catalog_category>
+      <!-- Adds 2 content placeholders; 1 before and 1 after the products -->
+      <reference name="content">
+          <block type="increasingly_analytics/element" name="increasingly.page.category1" after="category.products"
+                 template="increasingly/element.phtml">
+              <action method="setData">
+                  <name>div_id</name>
+                  <value>increasingly-page-category1</value>
+              </action>
+          </block>
+         <!--  <block type="increasingly_analytics/element" name="increasingly.page.category2" after="category.products"
+                 template="increasingly/element.phtml">
+              <action method="setData">
+                  <name>div_id</name>
+                  <value>increasingly-page-category2</value>
+              </action>
+          </block> -->
+      </reference>
+  </increasingly_analytics_catalog_category>
+
+
+   <!-- 404 Not found page -->
+  <cms_index_noroute>
+    <reference name="content">
+      <block type="increasingly_analytics/element" name="increasingly.page.notfound1" after="-"
+        template="increasingly/element.phtml">
+        <action method="setData">
+          <name>div_id</name>
+          <value>notfound-increasingly-1</value>
+        </action>
+      </block>
+    </reference>
+  </cms_index_noroute>
+  <!-- Order confirmation page -->
+  <checkout_onepage_success>
+    <reference name="content">
+      <block type="increasingly_analytics/element" name="increasingly.page.orderconfirmation1" after="-" template="increasingly/element.phtml">
+        <action method="setData">
+          <name>div_id</name>
+          <value>thankyou-increasingly-1</value>
+        </action>
+      </block>
+      <block type="increasingly_analytics/element" name="increasingly.page.orderconfirmation2" after="increasingly.page.orderconfirmation1" template="increasingly/element.phtml">
+          <action method="setData">
+              <name>div_id</name>
+              <value>thankyou-increasingly-2</value>
+          </action>
+      </block>
+    </reference>
+  </checkout_onepage_success>
+</layout>
