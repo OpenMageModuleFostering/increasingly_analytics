@@ -28,19 +28,8 @@
 <?php $helper = Mage::helper('increasingly_analytics'); ?>
 <?php $events = $this->getTrackingEvents(); ?>
 
-<script type="text/javascript"> 
-  $(document).on("click", "#btnaddtobasket", function () {
-    var tmpl = mageTemplate('#mage-template');
-    var data = {
-      data: {
-        name: 'John',
-        location: 'New York'
-      }
-    };
-    $('#target').after(
-           tmpl(data)
-    );
-  });
+<script type="text/javascript">
+
   window.increasingly=window.increasingly||[],window.increasingly.queue=[],window.increasingly.methods=["identify","track"],
   window.increasingly.filter=function(e){return function(){a=Array.prototype.slice.call(arguments);a.unshift(e);window.increasingly.queue.push(a);}};
 
@@ -55,9 +44,6 @@
 
   window.increasingly.loadJs=function(){var t=document;var n=t.getElementsByTagName("script")[0];var r=t.createElement("script");
   r.type="text/javascript";r.async=true;r.src="http://www.increasingly.co/js/increasingly.js";n.parentNode.insertBefore(r,n);};
-
-
-
 
   increasingly.load();
   increasingly.loadJs();

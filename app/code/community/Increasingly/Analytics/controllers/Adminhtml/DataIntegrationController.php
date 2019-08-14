@@ -65,6 +65,7 @@ class Increasingly_Analytics_Adminhtml_DataIntegrationController extends Mage_Ad
          $configDetails->saveConfig('increasingly_analytics/settings/enable', $isIncreasinglyEnabled, 'default', 0);
          $configDetails->saveConfig('increasingly_analytics/settings/api_key', $apiKey, 'default', 0);
          $configDetails->saveConfig('increasingly_analytics/settings/api_secret', $apiSecret, 'default', 0);
+         Mage::app()->getCacheInstance()->cleanType('config');
          $configDetails=Mage::getModel('core/config');
 
          $data['store_name'] = Mage::app()->getStore()->getName();

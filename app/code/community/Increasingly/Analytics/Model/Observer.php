@@ -202,10 +202,6 @@ class Increasingly_Analytics_Model_Observer
     $helper = Mage::helper('increasingly_analytics');
     $priceFormatter = Mage::helper('increasingly_analytics/PriceFormatter');
     $product = Mage::getModel('catalog/product')->load($productId);
-    Mage::log($product->getPrice()*0.80, null, 'Increasingly_Analytics.log');
-    $product->setSpecialPrice( ($product->getPrice() * .80)   );
-    $product->setData('special_price', 99.99);
-    $product->save();
     if ($helper->isEnabled()){
       $data =  array(
         'product_id'        => $cartProduct->getId(),

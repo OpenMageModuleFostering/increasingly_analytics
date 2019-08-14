@@ -58,7 +58,8 @@ class Increasingly_Analytics_Helper_ProductFormatter extends Mage_Core_Helper_Ab
         $productDefaultImage = $product->getData('image');
         if(!empty($productDefaultImage) && $productDefaultImage !== 'no_selection')
         {
-          $productData['image_url'] =  $product->getImageUrl();
+          //$productData['image_url'] =  $product->getImageUrl();
+           $productData['image_url'] =  Mage::getModel('catalog/product_media_config')->getMediaUrl($product->getImage());
         }
         else
         {

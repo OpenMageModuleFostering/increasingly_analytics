@@ -191,11 +191,11 @@ class Increasingly_Analytics_Helper_Data extends Mage_Core_Helper_Abstract
       foreach($userBundleCollection as $userBundle){
           $userBundle->getBundleId();
           $userBundle->getDiscountPrice();
-          $userBundle->getTotalSpecialPrice();
+          $userBundle->getTotalPrice();
           array_push($bundleData, 
             array('id' => $userBundle->getBundleId(),
               'discountPrice' => $userBundle->getDiscountPrice(),
-              'totalSpecialPrice' => $userBundle->getTotalSpecialPrice()
+              'totalPrice' => $userBundle->getTotalPrice()
             ));       
       }
     }
@@ -270,7 +270,7 @@ class Increasingly_Analytics_Helper_Data extends Mage_Core_Helper_Abstract
       $signature = md5($encodedData.$api_secret);
       $url = 'http://optimizedby.increasingly.co/ImportData';
       $client = new Varien_Http_Client($url);
-      Mage::log($data,null,  'Increasingly_Analytics.log');   
+       
       $postData = array(
         'signature'   => $signature,
         'eventData'  => $encodedData

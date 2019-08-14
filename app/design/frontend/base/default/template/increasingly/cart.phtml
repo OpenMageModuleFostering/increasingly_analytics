@@ -37,7 +37,7 @@ $currency = Mage::app()->getStore()->getCurrentCurrencyCode();
 $increasinglyHelper = Mage::helper('increasingly_analytics');
 $increasinglyPriceHelper = Mage::helper('increasingly_analytics/priceFormatter');
 $cookieValue = Mage::getModel('core/cookie')->get('ivid');  
-if(Mage::getModel('increasingly_analytics/bundle2')){
+if(Mage::getModel('increasingly_analytics/bundle')){
   $userBundleCollection = Mage::getModel('increasingly_analytics/bundle')->getCollection()
     ->addFieldToFilter('increasingly_visitor_id',$cookieValue);
   $userBundelDetails = [];

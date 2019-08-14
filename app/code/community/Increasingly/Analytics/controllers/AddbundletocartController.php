@@ -146,7 +146,7 @@ class Increasingly_Analytics_AddbundletocartController extends Mage_Core_Control
         $bundle_id = $data[0]["bundle_id"];
         $productIds = [];
         $discountPrice = $data[0]["discountPrice"];
-        $totalSpecialPrice = $data[0]["totalSpecialPrice"];
+        $totalPrice = $data[0]["totalPrice"];
         $product = Mage::getModel('catalog/product');
         $product->load($productId);
         $this->cart->addProduct($product,array('qty' => 1));
@@ -169,7 +169,7 @@ class Increasingly_Analytics_AddbundletocartController extends Mage_Core_Control
         $bundle_id = $data[0]["bundle_id"];
         $productIds = [];
         $discountPrice = $data[0]["discountPrice"];
-        $totalSpecialPrice = $data[0]["totalSpecialPrice"];
+        $totalPrice = $data[0]["totalPrice"];
         $inStockProducts = [];
         $outOfStockProducts = [];
         $productErrorStr = "";
@@ -219,7 +219,7 @@ class Increasingly_Analytics_AddbundletocartController extends Mage_Core_Control
             $userBundle->setProductIds($productIdsStr);
             $userBundle->setIncreasinglyVisitorId($cookieValue);
             $userBundle->setDiscountPrice($discountPrice);
-            $userBundle->setTotalSpecialPrice($totalSpecialPrice);
+            $userBundle->setTotalPrice($totalPrice);
             $userBundle->save();
           }
           //Set cart was updated flag
